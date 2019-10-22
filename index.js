@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
 const trackRoutes = require('./routes/trackRoutes');
 const requireAuth = require('./middlewares/requireAuth');
+const keys = require('./config/keys');
 
 const app = express()
 
@@ -13,7 +14,7 @@ app.use(bodyParser.json());
 app.use(authRoutes);
 app.use(trackRoutes);
 
-const mongoUri = 'mongodb+srv://flo33:AsaIvBPWCJzif553@trackreactnative-liy2b.mongodb.net/test?retryWrites=true&w=majority'
+const mongoUri = keys.mongoURI
 mongoose.connect(mongoUri, {
     useNewUrlParser: true,
     useCreateIndex: true,
